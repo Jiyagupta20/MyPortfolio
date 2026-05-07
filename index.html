@@ -1,392 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=1366" />
   <title>Jiya Gupta – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kalam:wght@300;400;700&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --black: #000000;
-      --white: #ffffff;
-      --purple: #7B2FBE;
-      --purple-mid: #8B35D6;
-      --border-purple: #a855f7;
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Bebas Neue', sans-serif;
+      background: #000;
+      width: 1366px;
+      height: 768px;
       overflow: hidden;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ── Outer purple border ── */
-    .frame {
       position: relative;
-      width: min(960px, 98vw);
-      aspect-ratio: 16 / 9;
-      border: 2.5px solid var(--border-purple);
-      background: var(--black);
-      overflow: hidden;
+      font-family: sans-serif;
     }
 
-    /* ── Ink splatter blobs ── */
-    .ink {
+    /* ── ink-splatter background blobs ── */
+    .bg-blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(0px);
-      opacity: 0.85;
-      background: #111;
+      background: #1a1a1a;
+      filter: blur(60px);
+      pointer-events: none;
     }
-    .ink-1 {
-      width: 22%; height: 55%;
-      top: 18%; left: -5%;
-      border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+
+    .blob1 {
+      width: 520px;
+      height: 420px;
+      left: -80px;
+      top: 120px;
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+    }
+
+    .blob2 {
+      width: 340px;
+      height: 300px;
+      left: 60px;
+      bottom: 60px;
+      border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
+    }
+
+    .blob3 {
+      width: 280px;
+      height: 260px;
+      right: 260px;
+      top: 80px;
+      border-radius: 55% 45% 40% 60% / 45% 55% 60% 40%;
       background: #161616;
     }
-    .ink-2 {
-      width: 18%; height: 40%;
-      top: 5%; left: 3%;
-      border-radius: 40% 60% 65% 35% / 55% 45% 55% 45%;
-      background: #121212;
-    }
-    .ink-3 {
-      width: 12%; height: 30%;
-      bottom: 8%; left: 8%;
-      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
-      background: #141414;
-    }
-    .ink-4 {
-      width: 14%; height: 35%;
-      top: 35%; left: 14%;
-      border-radius: 45% 55% 60% 40% / 40% 60% 40% 60%;
-      background: #0f0f0f;
-    }
 
-    /* ── Name top-left ── */
+    /* ── top-left name ── */
     .name {
       position: absolute;
-      top: 6%;
-      left: 3%;
+      top: 28px;
+      left: 36px;
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(16px, 2.2vw, 26px);
-      letter-spacing: 0.08em;
-      color: var(--white);
-      z-index: 10;
+      font-size: 22px;
+      color: #fff;
+      letter-spacing: 1px;
     }
 
-    /* ── Subtitle italic ── */
+    /* ── subtitle ── */
     .subtitle {
       position: absolute;
-      top: 18%;
-      left: 16%;
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(14px, 2vw, 24px);
-      color: var(--white);
+      top: 148px;
+      left: 200px;
+      font-family: 'Kalam', cursive;
+      font-size: 34px;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 1px;
       font-style: italic;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+    }
+
+    /* ── giant PORTFOLIO word ── */
+    .portfolio-wrap {
+      position: absolute;
+      top: 190px;
+      left: 36px;
+      width: 1290px;
+      height: 380px;
+    }
+
+    /* white letters: P O R T  (left side) */
+    .word-left {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 300px;
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -6px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    /* white letters: O  (right side, partially hidden by tear) */
+    .word-right {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 300px;
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -6px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    /* ── torn-paper purple reveal ── */
+    .torn-wrap {
+      position: absolute;
+      top: 60px;
+      left: 580px;
+      width: 680px;
+      height: 290px;
+      pointer-events: none;
+    }
+
+    /* purple text underneath */
+    .word-purple {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 300px;
+      line-height: 1;
+      color: #7b2fff;
+      letter-spacing: -6px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    /* torn paper overlay shape – white paper being peeled */
+    .torn-paper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── eraser / pen objects ── */
+    .eraser-left {
+      position: absolute;
+      bottom: 138px;
+      left: 30px;
+      width: 160px;
+      height: 32px;
+      background: #888;
+      border-radius: 4px;
+      transform: rotate(-8deg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .eraser-left::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 28px;
+      height: 100%;
+      background: #b0a0ff;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .eraser-right {
+      position: absolute;
+      bottom: 108px;
+      right: 180px;
+      width: 160px;
+      height: 32px;
+      background: #888;
+      border-radius: 4px;
+      transform: rotate(-12deg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .eraser-right::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 28px;
+      height: 100%;
+      background: #b0a0ff;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ── avatar illustration ── */
+    .avatar {
+      position: absolute;
+      bottom: 88px;
+      right: 20px;
+      width: 220px;
+      height: 260px;
+      object-fit: contain;
       z-index: 10;
     }
 
-    /* ── PORTFOLIO big text ── */
-    .portfolio-wrap {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-52%, -46%);
-      z-index: 5;
-      white-space: nowrap;
-      line-height: 1;
-    }
-
-    .portfolio-word {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(60px, 13.5vw, 155px);
-      letter-spacing: 0.01em;
-      color: var(--white);
-      position: relative;
-      display: inline-block;
-    }
-
-    /* The ripped-reveal section (FOLIO half) */
-    .portfolio-word .reveal {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* White layer */
-    .reveal .white-layer {
-      display: inline-block;
-      color: var(--white);
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Purple layer clipped below the rip */
-    .reveal .purple-layer {
-      position: absolute;
-      top: 0; left: 0;
-      color: var(--purple-mid);
-      clip-path: polygon(0% 52%, 100% 38%, 100% 100%, 0% 100%);
-      z-index: 3;
-    }
-
-    /* ── Ripped paper SVG overlay ── */
-    .rip-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-52%, -46%);
-      width: clamp(200px, 45vw, 520px);
-      pointer-events: none;
-      z-index: 6;
-    }
-
-    /* ── Tape pieces ── */
-    .tape {
-      position: absolute;
-      background: rgba(130,130,130,0.55);
-      border-radius: 2px;
-      z-index: 8;
-    }
-    .tape-left {
-      width: clamp(38px, 5vw, 65px);
-      height: clamp(10px, 1.2vw, 16px);
-      bottom: 31%;
-      left: 12.5%;
-      transform: rotate(-35deg);
-    }
-    .tape-right {
-      width: clamp(38px, 5vw, 65px);
-      height: clamp(10px, 1.2vw, 16px);
-      top: 36%;
-      right: 13%;
-      transform: rotate(-28deg);
-    }
-
-    /* ── Cartoon avatar ── */
-    .avatar {
-      position: absolute;
-      bottom: 10%;
-      right: 2%;
-      height: 60%;
-      z-index: 9;
-    }
-
-    /* ── Bottom toolbar ── */
+    /* ── bottom toolbar ── */
     .toolbar {
       position: absolute;
-      bottom: 4%;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(45,45,50,0.92);
-      border-radius: 10px;
       display: flex;
       align-items: center;
-      gap: clamp(6px, 1.2vw, 16px);
-      padding: clamp(6px, 0.9vw, 10px) clamp(12px, 2vw, 22px);
-      z-index: 15;
-      backdrop-filter: blur(4px);
+      gap: 4px;
+      background: #2a2a2a;
+      border-radius: 14px;
+      padding: 10px 18px;
+      z-index: 20;
     }
 
-    .tb-icon {
-      width: clamp(16px, 2vw, 24px);
-      height: clamp(16px, 2vw, 24px);
-      stroke: rgba(255,255,255,0.75);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-
-    .tb-btn {
-      background: #4f86f7;
-      border-radius: 6px;
-      padding: 4px 6px;
+    .toolbar-btn {
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 16px;
+      transition: background 0.15s;
     }
-    .tb-btn .tb-icon { stroke: #fff; }
 
-    .tb-divider {
+    .toolbar-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .toolbar-btn.active {
+      background: #4f8ef7;
+      color: #fff;
+    }
+
+    .toolbar-divider {
       width: 1px;
-      height: clamp(16px, 2vw, 24px);
-      background: rgba(255,255,255,0.2);
-      flex-shrink: 0;
+      height: 28px;
+      background: #444;
+      margin: 0 6px;
     }
 
-    .tb-dot {
-      width: 5px; height: 5px;
-      background: rgba(255,255,255,0.4);
-      border-radius: 50%;
-      flex-shrink: 0;
+    .toolbar-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+    }
+
+    /* purple border outline of page */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border: 2px solid #7b2fff;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 30;
     }
   </style>
 </head>
+
 <body>
 
-<div class="frame">
+  <!-- background blobs -->
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
+  <div class="bg-blob blob3"></div>
 
-  <!-- Ink blobs -->
-  <div class="ink ink-1"></div>
-  <div class="ink ink-2"></div>
-  <div class="ink ink-3"></div>
-  <div class="ink ink-4"></div>
-
-  <!-- Name -->
+  <!-- name top left -->
   <div class="name">JIYA GUPTA</div>
 
-  <!-- Subtitle -->
+  <!-- subtitle -->
   <div class="subtitle">UI/UX Designer</div>
 
-  <!-- Main PORTFOLIO text -->
+  <!-- PORTFOLIO giant text -->
   <div class="portfolio-wrap">
-    <span class="portfolio-word">
-      PORT
-      <span class="reveal">
-        <span class="white-layer">FOLIO</span>
-        <span class="purple-layer" aria-hidden="true">FOLIO</span>
-      </span>
-    </span>
-  </div>
 
-  <!-- SVG ripped paper tear line -->
-  <svg class="rip-overlay" viewBox="0 0 520 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M 0 75
-         L 18 68  L 30 78  L 44 62  L 58 72  L 70 58  L 85 70
-         L 100 55 L 115 68 L 128 52 L 142 66 L 155 50 L 168 63
-         L 182 47 L 196 62 L 210 45 L 224 60 L 238 44 L 252 58
-         L 266 42 L 280 56 L 295 40 L 308 54 L 322 38 L 336 52
-         L 350 36 L 364 50 L 378 35 L 392 50 L 406 36 L 420 52
-         L 434 38 L 448 54 L 462 40 L 476 56 L 490 42 L 505 58 L 520 44"
-      stroke="white"
-      stroke-width="2.2"
-      stroke-linecap="round"
-      fill="none"
-      opacity="0.9"
-    />
-    <!-- torn paper fill below the rip -->
-    <path
-      d="M 0 75
-         L 18 68  L 30 78  L 44 62  L 58 72  L 70 58  L 85 70
-         L 100 55 L 115 68 L 128 52 L 142 66 L 155 50 L 168 63
-         L 182 47 L 196 62 L 210 45 L 224 60 L 238 44 L 252 58
-         L 266 42 L 280 56 L 295 40 L 308 54 L 322 38 L 336 52
-         L 350 36 L 364 50 L 378 35 L 392 50 L 406 36 L 420 52
-         L 434 38 L 448 54 L 462 40 L 476 56 L 490 42 L 505 58 L 520 44
-         L 520 120 L 0 120 Z"
-      fill="white"
-      opacity="0.06"
-    />
-  </svg>
+    <!-- white "PORT" -->
+    <div class="word-left">PORT</div>
 
-  <!-- Tape pieces -->
-  <div class="tape tape-left"></div>
-  <div class="tape tape-right"></div>
+    <!-- torn purple reveal area -->
+    <div class="torn-wrap">
+      <!-- purple FOLIO behind -->
+      <div class="word-purple">FOLIO</div>
 
-  <!-- Cartoon avatar SVG (inline recreation matching the design) -->
-  <svg class="avatar" viewBox="0 0 180 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Body / top -->
-    <ellipse cx="90" cy="260" rx="55" ry="55" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
-    <!-- Floral top hint -->
-    <ellipse cx="90" cy="255" rx="40" ry="42" fill="#1e1a2a"/>
-    <circle cx="75" cy="248" r="4" fill="#2a2040" opacity="0.8"/>
-    <circle cx="90" cy="243" r="3" fill="#2a2040" opacity="0.8"/>
-    <circle cx="105" cy="250" r="4" fill="#2a2040" opacity="0.8"/>
-    <!-- Neck -->
-    <rect x="80" y="195" width="20" height="28" rx="8" fill="#e8c49a"/>
-    <!-- Head -->
-    <ellipse cx="90" cy="175" rx="48" ry="52" fill="#e8c49a"/>
-    <!-- Hair – long dark -->
-    <ellipse cx="90" cy="155" rx="50" ry="54" fill="#1a1008"/>
-    <!-- Hair sides -->
-    <path d="M 42 165 Q 28 220 38 290" stroke="#1a1008" stroke-width="22" stroke-linecap="round" fill="none"/>
-    <path d="M 138 165 Q 152 220 142 290" stroke="#1a1008" stroke-width="22" stroke-linecap="round" fill="none"/>
-    <!-- Face base over hair -->
-    <ellipse cx="90" cy="182" rx="36" ry="40" fill="#e8c49a"/>
-    <!-- Glasses frames -->
-    <rect x="62" y="174" width="22" height="16" rx="6" stroke="#222" stroke-width="2.5" fill="rgba(200,220,255,0.15)"/>
-    <rect x="94" y="174" width="22" height="16" rx="6" stroke="#222" stroke-width="2.5" fill="rgba(200,220,255,0.15)"/>
-    <line x1="84" y1="182" x2="94" y2="182" stroke="#222" stroke-width="2"/>
-    <line x1="62" y1="182" x2="55" y2="180" stroke="#222" stroke-width="2"/>
-    <line x1="116" y1="182" x2="123" y2="180" stroke="#222" stroke-width="2"/>
-    <!-- Eyes behind glasses -->
-    <circle cx="73" cy="182" r="4" fill="#3a2010"/>
-    <circle cx="105" cy="182" r="4" fill="#3a2010"/>
-    <circle cx="74.5" cy="181" r="1.2" fill="white"/>
-    <circle cx="106.5" cy="181" r="1.2" fill="white"/>
-    <!-- Eyebrows -->
-    <path d="M 63 171 Q 73 167 83 170" stroke="#2a1808" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <path d="M 95 170 Q 105 167 115 171" stroke="#2a1808" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <!-- Nose -->
-    <path d="M 88 192 Q 86 200 90 202 Q 94 200 92 192" stroke="#c8986a" stroke-width="1.5" fill="none"/>
-    <!-- Smile -->
-    <path d="M 80 210 Q 90 218 100 210" stroke="#b07040" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <!-- Cheek blush -->
-    <ellipse cx="65" cy="200" rx="8" ry="5" fill="#f0a090" opacity="0.35"/>
-    <ellipse cx="115" cy="200" rx="8" ry="5" fill="#f0a090" opacity="0.35"/>
-    <!-- Top of head hair -->
-    <path d="M 50 168 Q 55 128 90 122 Q 125 128 130 168" fill="#1a1008"/>
-    <!-- Hair strand detail -->
-    <path d="M 90 122 Q 85 108 78 100" stroke="#1a1008" stroke-width="8" stroke-linecap="round" fill="none"/>
-    <path d="M 90 122 Q 96 110 102 104" stroke="#1a1008" stroke-width="6" stroke-linecap="round" fill="none"/>
-  </svg>
-
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <!-- Select arrow btn (blue) -->
-    <div class="tb-btn">
-      <svg class="tb-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-7 2-3 7z" stroke="white" stroke-width="1.8" fill="none"/></svg>
+      <!-- SVG torn paper mask on top -->
+      <svg class="torn-paper" viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <!-- White paper sheet with ragged torn bottom edge being peeled away -->
+        <defs>
+          <filter id="shadow" x="-5%" y="-5%" width="115%" height="130%">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.7)" />
+          </filter>
+        </defs>
+        <!-- Main paper - top portion still covering purple -->
+        <path d="
+            M 0 0
+            L 680 0
+            L 680 155
+            C 640 148, 600 162, 560 150
+            C 520 138, 490 158, 455 144
+            C 420 130, 395 152, 360 140
+            C 325 128, 300 150, 265 136
+            C 230 122, 205 148, 170 134
+            C 135 120, 110 142, 75 128
+            C 50 118, 25 136, 0 122
+            Z
+          " fill="#fff" filter="url(#shadow)" />
+        <!-- Torn lower flap curling away -->
+        <path d="
+            M 0 200
+            C 25 192, 50 210, 75 196
+            C 110 180, 135 200, 170 186
+            C 205 172, 228 195, 265 178
+            C 300 162, 323 184, 360 170
+            C 395 156, 418 178, 455 164
+            C 490 150, 518 174, 560 158
+            C 600 143, 638 166, 680 155
+            L 680 290
+            L 0 290
+            Z
+          " fill="#fff" opacity="0.92" filter="url(#shadow)" />
+        <!-- Ragged tear white strip connecting them – the actual torn edge highlight -->
+        <path d="
+            M 0 122
+            C 25 136, 50 118, 75 128
+            C 110 142, 135 120, 170 134
+            C 205 148, 230 122, 265 136
+            C 300 150, 325 128, 360 140
+            C 395 152, 420 130, 455 144
+            C 490 158, 520 138, 560 150
+            C 600 162, 640 148, 680 155
+            C 638 166, 600 143, 560 158
+            C 518 174, 490 150, 455 164
+            C 418 178, 395 156, 360 170
+            C 323 184, 300 162, 265 178
+            C 228 195, 205 172, 170 186
+            C 135 200, 110 180, 75 196
+            C 50 210, 25 192, 0 200
+            Z
+          " fill="#fff" opacity="0.15" />
+      </svg>
     </div>
-    <svg class="tb-icon" style="opacity:.5" viewBox="0 0 24 24"><path d="M5 3l14 9-7 2-3 7z"/></svg>
-    <div class="tb-dot"></div>
 
-    <!-- Frame/grid -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
-    <div class="tb-dot"></div>
+    <!-- white "O" far right -->
+    <div class="word-right">O</div>
 
-    <!-- Rectangle -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
-    <div class="tb-dot"></div>
-
-    <!-- Pen/bezier -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-    <div class="tb-dot"></div>
-
-    <!-- Text -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-
-    <!-- Circle -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
-
-    <!-- Components -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg>
-
-    <div class="tb-divider"></div>
-
-    <!-- Pencil/scribble -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><path d="M3 17c2-2 4-3 6-1s4 1 6-1 4-2 6 0"/><path d="M3 12c2-2 4-3 6-1s4 1 6-1 4-2 6 0"/></svg>
-
-    <!-- Hand/cursor -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><path d="M18 11V8a2 2 0 00-4 0v3"/><path d="M14 8V6a2 2 0 00-4 0v5"/><path d="M10 6.5A2 2 0 006 8v7l2 3h8l2-3v-6a2 2 0 00-4 0"/></svg>
-
-    <!-- Code brackets -->
-    <svg class="tb-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
   </div>
 
-</div>
+  <!-- erasers -->
+  <div class="eraser-left"></div>
+  <div class="eraser-right"></div>
+
+  <!-- avatar (use the uploaded illustration as base64 or img tag) -->
+  <img class="avatar" src="/mnt/user-data/uploads/1778172051568_image.png" alt="Jiya Gupta illustration"
+    onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='block';" />
+  <!-- SVG fallback avatar if image path doesn't work in browser -->
+  <svg id="avatar-fallback" style="display:none; position:absolute; bottom:88px; right:20px; width:220px; height:260px;"
+    viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+    <!-- simplified avatar silhouette -->
+    <ellipse cx="110" cy="95" rx="55" ry="65" fill="#fff" />
+    <circle cx="110" cy="80" r="38" fill="#fff" stroke="#000" stroke-width="2" />
+    <!-- glasses -->
+    <circle cx="97" cy="82" r="13" fill="none" stroke="#000" stroke-width="2.5" />
+    <circle cx="123" cy="82" r="13" fill="none" stroke="#000" stroke-width="2.5" />
+    <line x1="110" y1="82" x2="110" y2="82" stroke="#000" stroke-width="2" />
+    <!-- hair -->
+    <path d="M72 65 Q60 30 110 28 Q160 30 148 65" fill="#111" stroke="#111" />
+    <path d="M72 65 Q55 100 65 140 Q80 160 95 170" fill="#111" />
+    <path d="M148 65 Q165 100 155 140 Q140 160 125 170" fill="#111" />
+    <!-- body -->
+    <path d="M70 160 Q55 200 60 260 L160 260 Q165 200 150 160 Q130 150 110 150 Q90 150 70 160Z" fill="#fff"
+      stroke="#000" stroke-width="2" />
+    <!-- smile -->
+    <path d="M100 95 Q110 103 120 95" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" />
+  </svg>
+
+  <!-- toolbar -->
+  <div class="toolbar">
+    <!-- cursor/select (active) -->
+    <div class="toolbar-btn active toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M5 3l14 9-7 2-3 7z" stroke="currentColor" stroke-width="1.8" fill="none" />
+      </svg>
+    </div>
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" stroke="currentColor" stroke-width="1.5"
+          fill="none" />
+      </svg>
+    </div>
+    <!-- rectangle -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="1" stroke="currentColor" stroke-width="1.8" />
+      </svg>
+    </div>
+    <!-- pen/bezier -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 19l-7-7 7-7 7 7z" stroke="currentColor" stroke-width="1.8" />
+        <circle cx="12" cy="12" r="2" fill="currentColor" />
+      </svg>
+    </div>
+    <!-- T text -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 6h16M12 6v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </div>
+    <!-- circle -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+      </svg>
+    </div>
+    <!-- components/grid-plus -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none" />
+        <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none" />
+        <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none" />
+        <path d="M17.5 14v7M14 17.5h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
+    <!-- pencil/draw -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 20l4-1L20 7l-3-3L5 16z" stroke="currentColor" stroke-width="1.6" fill="none" />
+        <path d="M17 4l3 3" stroke="currentColor" stroke-width="1.6" />
+      </svg>
+    </div>
+    <!-- frame/artboard -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 8h18M3 16h18M8 3v18M16 3v18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </div>
+    <!-- code embed -->
+    <div class="toolbar-btn toolbar-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 6L3 12l5 6M16 6l5 6-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round" fill="none" />
+      </svg>
+    </div>
+  </div>
 
 </body>
+
 </html>
