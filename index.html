@@ -234,65 +234,7 @@
 
     <!-- torn purple reveal area -->
     <div class="torn-wrap">
-      <!-- purple FOLIO behind -->
-      <div class="word-purple">FOLIO</div>
-
-      <!-- SVG torn paper mask on top -->
-      <svg class="torn-paper" viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <!-- White paper sheet with ragged torn bottom edge being peeled away -->
-        <defs>
-          <filter id="shadow" x="-5%" y="-5%" width="115%" height="130%">
-            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.7)" />
-          </filter>
-        </defs>
-        <!-- Main paper - top portion still covering purple -->
-        <path d="
-            M 0 0
-            L 680 0
-            L 680 155
-            C 640 148, 600 162, 560 150
-            C 520 138, 490 158, 455 144
-            C 420 130, 395 152, 360 140
-            C 325 128, 300 150, 265 136
-            C 230 122, 205 148, 170 134
-            C 135 120, 110 142, 75 128
-            C 50 118, 25 136, 0 122
-            Z
-          " fill="#fff" filter="url(#shadow)" />
-        <!-- Torn lower flap curling away -->
-        <path d="
-            M 0 200
-            C 25 192, 50 210, 75 196
-            C 110 180, 135 200, 170 186
-            C 205 172, 228 195, 265 178
-            C 300 162, 323 184, 360 170
-            C 395 156, 418 178, 455 164
-            C 490 150, 518 174, 560 158
-            C 600 143, 638 166, 680 155
-            L 680 290
-            L 0 290
-            Z
-          " fill="#fff" opacity="0.92" filter="url(#shadow)" />
-        <!-- Ragged tear white strip connecting them – the actual torn edge highlight -->
-        <path d="
-            M 0 122
-            C 25 136, 50 118, 75 128
-            C 110 142, 135 120, 170 134
-            C 205 148, 230 122, 265 136
-            C 300 150, 325 128, 360 140
-            C 395 152, 420 130, 455 144
-            C 490 158, 520 138, 560 150
-            C 600 162, 640 148, 680 155
-            C 638 166, 600 143, 560 158
-            C 518 174, 490 150, 455 164
-            C 418 178, 395 156, 360 170
-            C 323 184, 300 162, 265 178
-            C 228 195, 205 172, 170 186
-            C 135 200, 110 180, 75 196
-            C 50 210, 25 192, 0 200
-            Z
-          " fill="#fff" opacity="0.15" />
-      </svg>
+      <img style="width: 100%; height: 100%; object-fit: contain;" src="data:image/png;base64,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" alt="Portfolio" />
     </div>
 
 
